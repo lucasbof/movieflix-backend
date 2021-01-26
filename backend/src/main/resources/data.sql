@@ -1,9 +1,9 @@
--- Gênero
+-- Genre
 INSERT INTO tb_genre (name) VALUES ('Aventura');
 INSERT INTO tb_genre (name) VALUES ('Comédia');
 INSERT INTO tb_genre (name) VALUES ('Ficção Científica');
 
--- Filme
+-- Movie
 -- Aventura
 INSERT INTO tb_movie (title, sub_title, year, img_url, synopsis, genre_id) VALUES ('Jumanji: Próxima Fase', 'O jogo bugou', 2019, 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/lzGTOie3M3Adb4eIAXqolDuxm3S.jpg', 'Tentado em revisitar o mundo de Jumanji, Spencer (Alex Wolff) decide consertar o jogo de videogame que permite que os jogadores sejam transportados ao local. Logo o quarteto formado por Smolder Bravestone (Dwayne Johnson), Moose Finbar (Kevin Hart), Shelly Oberon (Jack Black) e Ruby Roundhouse (Karen Gillan) ressurge, agora comandado por outras pessoas: os avôs de Spencer e Fridge (Danny DeVito e Danny Glover) assumem as personas de Bravestone e Finbar, enquanto o próprio Fridge (Ser Darius Blain) agora está sob a pele de Oberon.', 1);
 INSERT INTO tb_movie (title, sub_title, year, img_url, synopsis, genre_id) VALUES ('Harry Potter e a Pedra Filosofal', 'Uma jornada além de sua imaginação', 2001, 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/7Hyl3IiKsaskhBnbkBU9jpAj57F.jpg', 'Harry Potter é um garoto órfão que vive infeliz com seus tios, os Dursleys. Ele recebe uma carta contendo um convite para ingressar em Hogwarts, uma famosa escola especializada em formar jovens bruxos. Inicialmente, Harry é impedido de ler a carta por seu tio, mas logo recebe a visita de Hagrid, o guarda-caça de Hogwarts, que chega para levá-lo até a escola. Harry adentra um mundo mágico que jamais imaginara, vivendo diversas aventuras com seus novos amigos, Rony Weasley e Hermione Granger.', 1);
@@ -40,17 +40,17 @@ INSERT INTO tb_movie (title, sub_title, year, img_url, synopsis, genre_id) VALUE
 INSERT INTO tb_movie (title, sub_title, year, img_url, synopsis, genre_id) VALUES ('O Exterminador do Futuro 3 - A Rebelião das Máquinas', 'O dia do julgamento se aproxima.', 2003, 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/3X43GIuFnadD2dFkT3TQePrag7y.jpg', 'Na intenção de concluir a missão ainda inacabada, a bela e perigosa máquina mortífera T-X é enviada para matar John Connor, líder da resistência humana contra as máquinas da Skynet. Para protegê-lo mais uma vez o ciborgue T-800 volta à cena.', 3);
 INSERT INTO tb_movie (title, sub_title, year, img_url, synopsis, genre_id) VALUES ('O Exterminador do Futuro 2: O Dia do Julgamento', 'Hasta la Vista, Baby!', 1991, 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/aaaZMN7HsFEZPF5SqbdUls2K8yI.jpg', 'O jovem John Connor é a chave para a vitória da civilização sobre uma rebelião de robôs do futuro. No entanto, ele torna-se alvo de T-1000, um exterminador que pode assumir a forma que desejar e que foi enviado do futuro para matá-lo. Outro exterminador, o renovado T-800, também é enviado de volta ao passado para proteger o menino. Quando John e sua mãe embarcam na fuga com T-800, o menino cria um vínculo forte e inesperado com o robô.', 3);
 
--- Função
+-- Role
 INSERT INTO tb_role (authority) VALUES ('ROLE_VISITOR');
 INSERT INTO tb_role (authority) VALUES ('ROLE_MEMBER');
 
--- Usuário
+-- User
 INSERT INTO tb_user (name, email, password) VALUES ('Bob Brown', 'bob@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (name, email, password) VALUES ('Ana Silva', 'ana@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (name, email, password) VALUES ('Maria Ferreira', 'maria@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (name, email, password) VALUES ('Alex Henrique', 'alex@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 
--- Tabela de Associação entre a Função e o Usuário
+-- Association table between user and role
 INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
@@ -58,7 +58,7 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 2);
 
 
--- Avaliação
+-- Review
 INSERT INTO tb_review (text, movie_id, user_id) VALUES ('Este é um filme muito interessante!', 2, 2);
 INSERT INTO tb_review (text, movie_id, user_id) VALUES ('Inclusive foi o filme que me fez gostar da saga Harry Potter', 2, 2);
 INSERT INTO tb_review (text, movie_id, user_id) VALUES ('Não gostei muito deste filme, mas gosto dos outros filmes da série', 2, 4);
