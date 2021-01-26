@@ -3,8 +3,6 @@ package com.devsuperior.movieflix.resources.exceptions;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.devsuperior.movieflix.services.exceptions.FieldMessage;
-
 public class ValidationError extends StandardError {
 
 	private static final long serialVersionUID = 1L;
