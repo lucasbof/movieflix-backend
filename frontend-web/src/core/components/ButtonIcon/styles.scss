@@ -1,0 +1,23 @@
+.btn-icon {
+    height: 70px;
+    width: 380px;
+    border-radius: 10px 0 0 10px !important;
+}
+
+.btn-icon-text {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.015em;
+}
+
+.btn-icon-content {
+    background-color: #937c1c;
+    width: 70px;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+}

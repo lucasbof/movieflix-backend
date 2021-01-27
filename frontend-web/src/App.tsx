@@ -1,13 +1,12 @@
 import React from 'react';
+import Routes from 'Routes';
 import './App.scss';
 import './core/assets/styles/custom.scss';
-import NavBar from './core/components/NavBar';
 
 function App() {
   return (
     <div>
-      <NavBar />
-      <h1>MovieFlix</h1>
+       <Routes />
     </div>
   );
 }

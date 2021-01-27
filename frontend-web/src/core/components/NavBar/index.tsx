@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import { isAuthenticated, logout } from 'core/utils/auth';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './styles.scss';
 
 const NavBar = () => {
 
+    const location = useLocation();
     const [isUserLogged, setIsUserLogged] = useState(false);
 
     const handleLogout = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
+        logout();
     }
+
+    useEffect(() => {
+        setIsUserLogged(isAuthenticated());
+    }, [location]);
 
     return (
         <div className="navbar-container row">
 
-            <a href="home" className="nav-logo-text">
+            <Link to="/" className="nav-logo-text">
                 MovieFlix
-            </a>
+            </Link>
 
             {
                 isUserLogged && (
