@@ -1,6 +1,6 @@
 import { isAuthenticated, logout } from 'core/utils/auth';
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './styles.scss';
 
 const NavBar = () => {
@@ -20,9 +20,9 @@ const NavBar = () => {
     return (
         <div className="navbar-container row">
 
-            <Link to="/" className="nav-logo-text">
+            <h1 className="nav-logo-text">
                 MovieFlix
-            </Link>
+            </h1>
 
             {
                 isUserLogged && (
