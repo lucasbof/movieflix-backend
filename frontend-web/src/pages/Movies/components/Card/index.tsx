@@ -1,23 +1,27 @@
+import { Movie } from 'core/types/Movie';
 import { truncate } from 'core/utils/helpers';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './styles.scss';
 
-const MovieCard = () => {
+type Props = {
+    movie: Movie;
+}
+
+const MovieCard = ({ movie }: Props) => {
 
     return (
-        <Link to="/movies/3" className="card-base card-container">
-            <img src="https://www.themoviedb.org/t/p/w533_and_h300_bestv2/7Hyl3IiKsaskhBnbkBU9jpAj57F.jpg" alt="HP" className="movie-card-image" />
+        <div className="card-base card-container">
+            <img src={movie.imgUrl} alt={movie.title} className="movie-card-image" />
             <div className="movie-info">
                 <h5 className="movie-title">
-                    {truncate('Harry Potter e a Pedra Filosofal uuyguguyguygggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 45)}
+                    {truncate(movie.title, 50)}
                 </h5>
-                <h6 className="movie-year">2001</h6>
+                <h6 className="movie-year">{movie.year}</h6>
                 <h6 className="movie-subtitle">
-                    {truncate('Harry Potter e a Pedra Filosofal uuyguguyguygggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 65)}
+                    {truncate(movie.subTitle, 65)}
                 </h6>
             </div>
-        </Link>
+        </div>
     );
 };
 
