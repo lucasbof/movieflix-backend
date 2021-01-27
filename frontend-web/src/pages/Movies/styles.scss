@@ -1,0 +1,17 @@
+.movies-container {
+    margin-top: 30px;
+    padding: 0 40px 50px 40px;
+}
+
+.genre-search-container {
+    height: 60px;
+    background-color: red;
+}
+
+.cards-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-gap: 33px 20px;
+    justify-content: space-between;
+    margin-top: 32px;
+}
