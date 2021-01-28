@@ -3,6 +3,7 @@ import { MoviesResponse } from 'core/types/Movie';
 import { makePrivateRequest } from 'core/utils/request';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import MovieCard from './components/Card';
 import GenreSelect from './components/GenreSelect';
 import MovieCardLoader from './components/Loaders/MovieCardLoader';
@@ -24,6 +25,7 @@ const Movies = () => {
         setIsLoading(true);
         makePrivateRequest({ url: '/movies', params })
             .then(response => setMoviesResponse(response.data))
+            .catch(() => toast.error('Erro ao buscar a lista de filmes'))
             .finally(() => {
                 setIsLoading(false);
             });
