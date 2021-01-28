@@ -47,7 +47,7 @@ const Login = () => {
                 <div className="">
                     <input
                         type="email" 
-                        className={`input-base ${errors.username && 'error-input'} ${!hasError && 'no-box-error'}`}
+                        className={`input-base ${errors.username && 'error-input-border'} ${!hasError && 'no-box-error'}`}
                         placeholder="Email"
                         name="username" 
                         ref={register({
@@ -59,20 +59,20 @@ const Login = () => {
                         })}
                     />
                     {errors.username && (
-                        <div className="error-message d-block">
+                        <div className="error-message-input d-block">
                             {errors.username.message}
                         </div>)}
                 </div>
                 <div className="pass-input">
                     <input
                         type="password" 
-                        className={`input-base ${errors.password && 'error-input'}`} 
+                        className={`input-base ${errors.password && 'error-input-border'}`} 
                         placeholder="Senha"
                         name="password" 
                         ref={register({ required: "Campo obrigatório" })}  
                     />
                     {errors.password && (
-                        <div className="error-message d-block">
+                        <div className="error-message-input d-block">
                             {errors.password.message}
                         </div>)}
                 </div>

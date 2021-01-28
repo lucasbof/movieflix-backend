@@ -1,9 +1,11 @@
 //import { Movie } from 'core/types/Movie';
 import { Movie } from 'core/types/Movie';
+import { isAllowedByRole } from 'core/utils/auth';
 import { makePrivateRequest } from 'core/utils/request';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BasicInfoCard from './components/BasicInfoCard';
+import ReviewInputCard from './components/ReviewInputCard';
 import BasicInfoLoader from './Loaders/BasicInfoLoader';
 import './styles.scss';
 
@@ -28,7 +30,7 @@ const MovieDetails = () => {
 
 
     return (
-        <div className="product-details-container">
+        <div className="movie-details-container">
             <div className="basic-info-container">
                 {
                     isLoading ?
@@ -38,6 +40,13 @@ const MovieDetails = () => {
                 }
 
             </div>
+            {isAllowedByRole(['ROLE_MEMBER']) && 
+            (
+                isLoading ?
+                        (<BasicInfoLoader />)
+                        :
+                        (<ReviewInputCard movieId={movie?.id ?? 0} />)
+            )}
 
 
         </div>

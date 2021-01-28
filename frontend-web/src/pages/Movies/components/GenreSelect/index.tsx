@@ -6,9 +6,10 @@ import './styles.scss';
 
 type Props = {
     setGenreId: Function;
+    setActivePage: Function;
 }
 
-const GenreSelect = ({ setGenreId }: Props) => {
+const GenreSelect = ({ setGenreId, setActivePage }: Props) => {
 
     const [genres, setGenres] = useState<Genre[]>([]);
     const [isLoadingGenres, setIsLoadingGenres] = useState(false);
@@ -32,7 +33,10 @@ const GenreSelect = ({ setGenreId }: Props) => {
             <Select
                 isLoading={isLoadingGenres}
                 placeholder="Gêneros..."
-                onChange={(genre) =>  setGenreId(genre?.id)}
+                onChange={(genre) => { 
+                    setGenreId(genre?.id);
+                    setActivePage(0);
+                }}
                 classNamePrefix="genres-select" 
                 options={genres}
                 isClearable={true}

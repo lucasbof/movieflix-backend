@@ -31,7 +31,7 @@ const Movies = () => {
 
     return (
         <div className="movies-container">
-            <GenreSelect setGenreId={setGenreId} />
+            <GenreSelect setGenreId={setGenreId} setActivePage={setActivePage}/>
 
             <div className="cards-area">
                 {isLoading ? <MovieCardLoader /> : (

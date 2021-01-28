@@ -1,0 +1,41 @@
+.review-input-container {
+    margin-top: 15px;
+    width: 1170px;
+    min-height: 165px;
+    border-radius: 10px;
+    padding: 16px 22px 13px 17px;
+}
+
+.form-review {
+    text-align: center;
+}
+
+.field-review-input {
+    min-height: 74px;
+    width: 100%;
+    border: 1px solid #E1E1E1;
+    border-radius: 10px;
+    padding-left: 20px;
+    &::placeholder {
+        color: #9E9E9E;
+    }
+}
+
+.btn-review-container {
+    margin-top: 12px;
+}
+
+.btn-review {
+    height: 50px;
+    width: 334px;
+    border-radius: 10px !important;
+}
+
+.btn-icon-text-review {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    color: #000;
+    margin: 0;
+}
