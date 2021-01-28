@@ -1,5 +1,9 @@
-.pass-input {
+.pass-input-container {
     margin-top: 32px;
+}
+
+.pass-input {
+    padding-right: 54px;
 }
 
 .login-submit {
@@ -13,4 +17,12 @@
 
 .no-box-error {
     margin-top: 95px;
+}
+
+.eye-password {
+    width: 35px;
+    height: 23px;
+    cursor: pointer;
+    margin-left: 402px;
+    margin-top: -41px;
 }

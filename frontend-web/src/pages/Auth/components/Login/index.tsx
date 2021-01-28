@@ -6,6 +6,8 @@ import AuthCard from '../Card';
 import './styles.scss';
 import { makeLogin } from 'core/utils/request';
 import { saveSessionData } from 'core/utils/auth';
+import { ReactComponent as ClosedEye } from 'core/assets/images/closed-eye.svg';
+import { ReactComponent as OpenedEye } from 'core/assets/images/opened-eye.svg';
 
 type FormState = {
     username: string;
@@ -21,9 +23,15 @@ const Login = () => {
     const [hasError, setHasError] = useState(false);
     const history = useHistory();
     const location = useLocation<LocationState>();
-    
+    const [passwordShown, setPasswordShown] = useState(false);
+
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
+
+
     const { from } = location.state || { from: { pathname: "/movies" } };
-    
+
     const onSubmit = (data: FormState) => {
         makeLogin(data)
             .then(response => {
@@ -35,7 +43,7 @@ const Login = () => {
                 setHasError(true);
             });
     };
-    
+
     return (
         <AuthCard title="login">
             {hasError && (
@@ -46,15 +54,15 @@ const Login = () => {
             <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="">
                     <input
-                        type="email" 
+                        type="email"
                         className={`input-base ${errors.username && 'error-input-border'} ${!hasError && 'no-box-error'}`}
                         placeholder="Email"
-                        name="username" 
+                        name="username"
                         ref={register({
                             required: "Campo obrigatório",
                             pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: "Email inválido"
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Email inválido"
                             }
                         })}
                     />
@@ -63,14 +71,17 @@ const Login = () => {
                             {errors.username.message}
                         </div>)}
                 </div>
-                <div className="pass-input">
+                <div className="pass-input-container">
                     <input
-                        type="password" 
-                        className={`input-base ${errors.password && 'error-input-border'}`} 
+                        type={passwordShown ? "text" : "password"}
+                        className={`input-base pass-input pass${errors.password && 'error-input-border'}`}
                         placeholder="Senha"
-                        name="password" 
-                        ref={register({ required: "Campo obrigatório" })}  
+                        name="password"
+                        ref={register({ required: "Campo obrigatório" })}
                     />
+                    <div onClick={togglePasswordVisiblity} className="eye-password">
+                        {passwordShown ? (<OpenedEye />) : (<ClosedEye />)}
+                    </div>
                     {errors.password && (
                         <div className="error-message-input d-block">
                             {errors.password.message}
