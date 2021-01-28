@@ -74,7 +74,7 @@ const Login = () => {
                 <div className="pass-input-container">
                     <input
                         type={passwordShown ? "text" : "password"}
-                        className={`input-base pass-input pass${errors.password && 'error-input-border'}`}
+                        className={`input-base pass-input ${errors.password && 'error-input-border'}`}
                         placeholder="Senha"
                         name="password"
                         ref={register({ required: "Campo obrigatório" })}
@@ -83,7 +83,7 @@ const Login = () => {
                         {passwordShown ? (<OpenedEye />) : (<ClosedEye />)}
                     </div>
                     {errors.password && (
-                        <div className="error-message-input d-block">
+                        <div className="error-input-pass d-block">
                             {errors.password.message}
                         </div>)}
                 </div>
