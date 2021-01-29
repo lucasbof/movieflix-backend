@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Home } from '../pages';
+import { Home, Login } from '../pages';
 import { colors } from '../styles';
 import { RightHeader, LeftHeader } from '../components';
 
@@ -13,7 +13,6 @@ const Routes = () => {
                 headerTitle: '',
                 headerStyle: {
                     backgroundColor: colors.primary,
-                    height: 100,
                 },
                 headerLeft: () => <LeftHeader />,
                 headerRight: () => <RightHeader />
@@ -22,6 +21,10 @@ const Routes = () => {
             <Stack.Screen
                 name="Home"
                 component={Home}
+            />
+            <Stack.Screen
+                name="Login"
+                component={Login}
             />
         </Stack.Navigator>
     );
