@@ -19,7 +19,7 @@ export const colors = {
 export const commonCss = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: 'flex-start',
         alignItems: "center",
         padding: 20,
         backgroundColor: colors.secondary
@@ -112,6 +112,9 @@ export const buttonIconCss = StyleSheet.create({
 
 
 export const homeCss =  StyleSheet.create({
+    imageContainer: {
+        marginTop: 50
+    },
     titleContainer: {
         marginTop: 40
     },
@@ -134,5 +137,44 @@ export const homeCss =  StyleSheet.create({
     },
     btnContainer: {
         marginTop: 50
+    }
+});
+
+export const loginCss = StyleSheet.create({
+    titleContainer: {
+        marginTop: 80
+    },
+    btnContainer: {
+        marginTop: 34
+    },
+    titleText: {
+        fontSize: 30,
+        lineHeight: 41,
+        letterSpacing: -0.0124,
+        color: colors.white
+    },
+    inputsContainer: {
+        marginTop: 82,
+        width: 334,
+        height: 132,
+        justifyContent: 'space-between',
+    },
+    inputStyle: {
+        width: 334,
+        height: 50,
+        borderWidth: 1,
+        borderColor: colors.borderGray,
+        borderRadius: 10,
+        paddingTop: 10,
+        paddingLeft: 10,
+        paddingBottom: 10,
+        backgroundColor: colors.white
+    },
+    passwordContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    toggle: {
+        margin: -40,
     }
 });

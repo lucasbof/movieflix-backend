@@ -2,19 +2,18 @@ import React from 'react';
 import { Image, Text, View, TouchableOpacity } from 'react-native';
 import { buttonIconCss } from '../styles';
 import arrow from '../assets/images/arrow.png';
-import { useNavigation } from '@react-navigation/native';
+
 
 type Props = {
     label: string;
-    routeToGo: string;
+    onPress: Function;
 }
 
-const ButtonIcon = ({ label, routeToGo }: Props) => {
-    const navigation = useNavigation();
+const ButtonIcon = ({ label, onPress }: Props) => {
 
     return (
         <TouchableOpacity
-            onPress={() => navigation.navigate(routeToGo)}
+            onPress={() => onPress()}
             style={buttonIconCss.container}
             activeOpacity={0.8}
         >
