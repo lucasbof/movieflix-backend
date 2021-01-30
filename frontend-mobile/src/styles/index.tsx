@@ -319,3 +319,84 @@ export const moviesListCss = StyleSheet.create({
     }
 
 });
+
+export const basicInfoCardCss = StyleSheet.create({
+    container: {
+        width: 374,
+        backgroundColor: colors.mediumGray,
+        borderRadius: 20,
+        paddingVertical: 16,
+
+        //IOS shadow
+        shadowOffset: {
+            width: 0,
+            height: 4
+        },
+        shadowRadius: 20,
+        shadowOpacity: 0.25,
+        shadowColor: colors.black,
+
+        //Android shadow
+        elevation: 5,
+    },
+    titleContainer: {
+        paddingLeft: 25,
+        paddingRight: 15
+    },
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        lineHeight: 33,
+        letterSpacing: -0.0124,
+        color: colors.white
+    },
+    imageContainer: {
+        marginTop: 15
+    },
+    contentContainer: {
+        paddingLeft: 24,
+        paddingTop: 15,
+        paddingRight: 19,
+        paddingBottom: 14
+    },
+    yearText: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        lineHeight: 33,
+        letterSpacing: -0.0124,
+        color: colors.primary
+    },
+    subTitleText: {
+        fontSize: 18,
+        lineHeight: 25,
+        letterSpacing: -0.0124,
+        color: colors.textGray
+    },
+    synopsisContainer: {
+        marginTop: 30
+    },
+    synopsisTitleText: {
+        fontWeight: 'bold',
+        fontSize: 22,
+        lineHeight: 30,
+        letterSpacing: -0.0124,
+        color: colors.white
+    },
+    synopsisBodyContainer: {
+        marginTop: 8,
+        borderWidth: 1,
+        borderColor: colors.borderGray,
+        borderRadius: 20,
+        paddingTop: 13,
+        paddingRight: 18,
+        paddingBottom: 7,
+        paddingLeft: 19,
+    },
+    synopsisBodyText: {
+        fontSize: 16,
+        lineHeight: 22,
+        textAlign: 'justify',
+        letterSpacing: -0.0124,
+        color: colors.textGray
+    }
+});

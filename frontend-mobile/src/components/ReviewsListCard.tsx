@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 import star from '../assets/images/star.png';
 import { Review } from '../utils/types';
 
