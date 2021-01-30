@@ -187,7 +187,7 @@ export const movieCardCss = StyleSheet.create({
         height: 408,
         paddingVertical: 20,
         marginTop: 18,
-        
+
         //IOS shadow
         shadowOffset: {
             width: 0,
@@ -245,4 +245,77 @@ export const movieCardCss = StyleSheet.create({
         letterSpacing: -0.0124,
         color: colors.white
     }
+});
+
+export const moviesListCss = StyleSheet.create({
+    genreContainer: {
+        height: 82,
+        marginTop: 17,
+        backgroundColor: colors.mediumGray,
+        width: '100%',
+        borderRadius: 10,
+
+        //IOS shadow
+        shadowOffset: {
+            width: 0,
+            height: 4
+        },
+        shadowRadius: 20,
+        shadowOpacity: 0.25,
+        shadowColor: colors.black,
+
+        //Android shadow
+        elevation: 5,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    selectInput: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: 334,
+        height: 50,
+        borderWidth: 1,
+        borderColor: colors.white,
+        borderRadius: 10,
+        padding: 10,
+    },
+    selectText: {
+        fontSize: 16,
+        lineHeight: 22,
+        letterSpacing: -0.0124,
+        color: colors.white
+    },
+    modalContainer: {
+        width: deviceWidth,
+        height: deviceHeight,
+        backgroundColor: '#00000033',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    modalContent: {
+        width: 300,
+        justifyContent: 'center',
+        //alignItems: 'flex-start',
+        marginTop: '50%',
+        backgroundColor: colors.white,
+        borderRadius: 20,
+        padding: 20,
+        shadowColor: colors.black,
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 8
+    },
+    modalItem: {
+        width: '100%',
+        backgroundColor: colors.lightGray,
+        padding: 10,
+        marginVertical: 5,
+        borderRadius: 5
+    }
+
 });

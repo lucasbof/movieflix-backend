@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, Image, Modal, TouchableOpacity, ScrollView } from 'react-native';
 import { MovieCard } from '../components';
-import { colors, commonCss } from '../styles';
+import { commonCss, moviesListCss } from '../styles';
 import { makePrivateRequest } from '../utils/requests';
-import { Movie } from '../utils/types';
+import { Genre, Movie } from '../utils/types';
+import downArrow from '../assets/images/down-arrow.png';
 
 const Movies = () => {
 
@@ -12,12 +13,20 @@ const Movies = () => {
   const [activePage, setActivePage] = useState(0);
   const [genreId, setGenreId] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [genres, setGenres] = useState<Genre[]>([]);
+  const [isShowGenreModal, setIsShowGenreModal] = useState(false);
+  const [isGenresLoading, setIsGenresLoading] = useState(false);
 
   const renderFooter = () => {
-    if(activePage > totalPages) {
-      return null;
+    if (!isLoading) {
+      return (<View></View>);
     }
     return (<ActivityIndicator style={{ marginTop: 50 }} color="#FFF" size="large" />);
+  }
+
+  const handleOnPressGenre = (id: number) => {
+    setGenreId(id);
+    setIsShowGenreModal(!isShowGenreModal);
   }
 
   const getMoviesList = async (isGenreChange: boolean) => {
@@ -30,8 +39,12 @@ const Movies = () => {
         genreId
       }
 
-      const res = await makePrivateRequest({ url: '/movies', params });
       if(isGenreChange) {
+        setActivePage(0);
+      }
+
+      const res = await makePrivateRequest({ url: '/movies', params });
+      if (isGenreChange) {
         setMoviesList(res.data.content);
       }
       else {
@@ -50,8 +63,22 @@ const Movies = () => {
     }
   }
 
+  const getGenresList = async () => {
+    try {
+      setIsGenresLoading(true);
+      const res = await makePrivateRequest({ url: '/genres' });
+      setGenres([...res.data, { id: 0, name: 'Todos os gêneros' }]);
+    }
+    catch (error) {
+      console.warn(error);
+    }
+    finally {
+      setIsGenresLoading(false);
+    }
+  }
+
   useEffect(() => {
-    if(activePage !== 0) {
+    if (activePage !== 0) {
       getMoviesList(true);
     }
     else {
@@ -59,10 +86,54 @@ const Movies = () => {
     }
   }, [genreId]);
 
+  useEffect(() => {
+    getGenresList();
+  }, []);
+
   return (
     <View style={commonCss.container}>
-      <View style={{height: 82, marginTop: 17, backgroundColor: colors.mediumGray, width: '100%'}}>
-        <Text>Genre area</Text>
+      <Modal
+        visible={isShowGenreModal}
+        animationType="fade"
+        transparent={true}
+        presentationStyle="overFullScreen"
+      >
+        <View style={moviesListCss.modalContainer}>
+          <ScrollView contentContainerStyle={moviesListCss.modalContent}>
+            {
+              isGenresLoading ? (<ActivityIndicator color="gray" size="large" />)
+                :
+                (genres.map(genre => (
+                  <TouchableOpacity
+                    key={genre.id}
+                    style={moviesListCss.modalItem}
+                    onPress={() => handleOnPressGenre(genre.id)}
+                  >
+                    <Text>{genre.name}</Text>
+                  </TouchableOpacity>
+                )))
+            }
+          </ScrollView>
+        </View>
+      </Modal>
+      <View style={moviesListCss.genreContainer}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => setIsShowGenreModal(!isShowGenreModal)}
+          style={moviesListCss.selectInput}
+        >
+          {
+            isGenresLoading ? (<ActivityIndicator color="gray" size="small" />)
+              :
+              (<Text
+                style={moviesListCss.selectText}
+              >
+                {genreId === 0 ? 'Todos os gêneros' : genres.filter(g => g.id === genreId)[0].name}
+              </Text>)
+          }
+
+          <Image source={downArrow} style={{ height: 9, width: 15 }} />
+        </TouchableOpacity>
       </View>
 
       {
@@ -78,7 +149,7 @@ const Movies = () => {
                 movie={item}
               />)
               }
-              onEndReached={() => { (activePage <= totalPages) && getMoviesList(false) }}
+              onEndReached={() => { if(activePage <= totalPages) getMoviesList(false) }}
               onEndReachedThreshold={0.1}
               keyExtractor={(item) => item.id.toString()}
               ListFooterComponent={renderFooter}
