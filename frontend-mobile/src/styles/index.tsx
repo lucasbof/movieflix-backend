@@ -446,3 +446,67 @@ export const reviewInputCardCss = StyleSheet.create({
         color: colors.black
     }
 });
+
+export const reviewsListCardCss = StyleSheet.create({
+
+    container: {
+        backgroundColor: colors.mediumGray,
+        borderRadius: 20,
+        paddingTop: 11,
+        paddingRight: 18,
+        paddingBottom: 18,
+        paddingLeft: 21,
+        marginTop: 18,
+
+        //IOS shadow
+        shadowOffset: {
+            width: 0,
+            height: 4
+        },
+        shadowRadius: 20,
+        shadowOpacity: 0.25,
+        shadowColor: colors.black,
+
+        //Android shadow
+        elevation: 5,
+    },
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 22,
+        lineHeight: 30,
+        letterSpacing: -0.0124,
+        color: colors.white
+    },
+    reviewContainer: {
+        marginTop: 20
+    },
+    authorContainer: {
+        flexDirection: 'row',
+        paddingLeft: 19,
+        alignItems: 'center'
+    },
+    authorText: {
+        marginLeft: 15,
+        fontWeight: 'bold',
+        fontSize: 16,
+        lineHeight: 22,
+        letterSpacing: -0.0124,
+        color: colors.white
+    },
+    reviewContentContainer: {
+        borderWidth: 1,
+        borderColor: colors.borderGray,
+        borderRadius: 20,
+        paddingVertical: 10,
+        paddingHorizontal: 19,
+        marginTop: 10
+    },
+    reviewContentText: {
+        fontSize: 16,
+        lineHeight: 22,
+        textAlign: 'justify',
+        letterSpacing: -0.0124,
+        color: colors.textGray
+    }
+
+});

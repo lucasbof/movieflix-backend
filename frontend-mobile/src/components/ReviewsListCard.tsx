@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import star from '../assets/images/star.png';
 import { Review } from '../utils/types';
+import { reviewsListCardCss } from '../styles';
 
 type Props = {
     reviews: Review[];
@@ -9,19 +10,19 @@ type Props = {
 
 const ReviewsListCard = ({ reviews }: Props) => {
     return (
-        <View>
+        <View style={reviewsListCardCss.container}>
             <View>
-                <Text>Avaliações</Text>
+                <Text style={reviewsListCardCss.titleText}>Avaliações</Text>
             </View>
                 {
                     reviews.map(review => (
-                        <View key={review.id}>
-                            <View>
+                        <View key={review.id} style={reviewsListCardCss.reviewContainer}>
+                            <View style={reviewsListCardCss.authorContainer}>
                                 <Image source={star} />
-                                <Text>{review.user.name}</Text>
+                                <Text style={reviewsListCardCss.authorText}>{review.user.name}</Text>
                             </View>
-                            <View>
-                                <Text>{review.text}</Text>
+                            <View style={reviewsListCardCss.reviewContentContainer}>
+                                <Text style={reviewsListCardCss.reviewContentText}>{review.text}</Text>
                             </View>
                         </View>
                     ))
