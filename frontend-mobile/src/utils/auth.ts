@@ -2,8 +2,8 @@ import jwtDecode from 'jwt-decode';
 import asyncStorage from '@react-native-async-storage/async-storage';
 import { LoginResponse } from './types';
 
-export const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'movieflix';
-export const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'movieflix123';
+export const CLIENT_ID = 'movieflix';
+export const CLIENT_SECRET = 'movieflix123';
 export type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER';
 
 type AccessToken = {
