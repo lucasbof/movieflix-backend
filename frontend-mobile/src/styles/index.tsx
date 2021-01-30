@@ -111,7 +111,7 @@ export const buttonIconCss = StyleSheet.create({
 });
 
 
-export const homeCss =  StyleSheet.create({
+export const homeCss = StyleSheet.create({
     imageContainer: {
         marginTop: 50
     },
@@ -176,5 +176,72 @@ export const loginCss = StyleSheet.create({
     },
     toggle: {
         margin: -40,
+    }
+});
+
+export const movieCardCss = StyleSheet.create({
+    container: {
+        backgroundColor: colors.mediumGray,
+        borderRadius: 10,
+        width: 374,
+        height: 408,
+        paddingVertical: 20,
+        
+        //IOS shadow
+        shadowOffset: {
+            width: 0,
+            height: 4
+        },
+        shadowRadius: 20,
+        shadowOpacity: 0.25,
+        shadowColor: colors.black,
+
+        //Android shadow
+        elevation: 6
+    },
+    infosArea: {
+        paddingTop: 20,
+        padding: 15
+
+    },
+    filmImage: {
+        width: 374,
+        height: 228
+    },
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        lineHeight: 25,
+        letterSpacing: -0.0124,
+        color: colors.white
+    },
+    yearText: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        lineHeight: 19,
+        letterSpacing: -0.0124,
+        color: colors.primary
+    },
+    subTitleText: {
+        fontSize: 16,
+        lineHeight: 22,
+        letterSpacing: -0.0124,
+        color: colors.subTitleGray
+    },
+    btnDetailsContainer: {
+        borderWidth: 1,
+        borderColor: colors.borderGray,
+        borderRadius: 10,
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10
+    },
+    btnDetailsText: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        lineHeight: 19,
+        letterSpacing: -0.0124,
+        color: colors.white
     }
 });

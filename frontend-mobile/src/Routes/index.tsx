@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Home, Login, Movies } from '../pages';
+import { Home, Login, MovieDetails, Movies } from '../pages';
 import { colors } from '../styles';
 import { RightHeader, LeftHeader } from '../components';
 
@@ -26,9 +26,13 @@ const Routes = () => {
                 name="Login"
                 component={Login}
             />
-             <Stack.Screen
+            <Stack.Screen
                 name="Movies"
                 component={Movies}
+            />
+            <Stack.Screen
+                name="MovieDetails"
+                component={MovieDetails}
             />
         </Stack.Navigator>
     );
