@@ -400,3 +400,49 @@ export const basicInfoCardCss = StyleSheet.create({
         color: colors.textGray
     }
 });
+
+export const reviewInputCardCss = StyleSheet.create({
+    container: {
+        backgroundColor: colors.mediumGray,
+        borderRadius: 20,
+        paddingVertical: 16,
+        paddingHorizontal: 20,
+        marginTop: 18,
+
+        //IOS shadow
+        shadowOffset: {
+            width: 0,
+            height: 4
+        },
+        shadowRadius: 20,
+        shadowOpacity: 0.25,
+        shadowColor: colors.black,
+
+        //Android shadow
+        elevation: 5,
+    },
+    inputReview: {
+        paddingHorizontal: 10,
+        minHeight: 97,
+        maxHeight: 400,
+        backgroundColor: colors.white,
+        borderWidth: 1,
+        borderColor: colors.borderGray,
+        borderRadius: 10,
+    },
+    btnSaveContainer: {
+        marginTop: 13,
+        height: 50,
+        backgroundColor: colors.primary,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    btnSaveText: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        lineHeight: 22,
+        letterSpacing: -0.0124,
+        color: colors.black
+    }
+});
