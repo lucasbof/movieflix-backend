@@ -1,18 +1,42 @@
-import React, { useState } from 'react';
-import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, TextInput, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { ButtonIcon } from '../components';
 import { commonCss, loginCss } from '../styles';
 import openedEye from '../assets/images/eyes-opened.png';
 import closedEye from '../assets/images/eyes-closed.png';
-import { UserInfo } from '../utils/types';
+import { LoginData } from '../utils/types';
+import { toastError } from '../utils/customToast';
+import { makeLoginRequest } from '../utils/requests';
+import { saveSessionData } from '../utils/auth';
+import { validateEmail } from '../utils/helpers';
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
+    const navigation = useNavigation();
 
     const [hidePassword, setHidePassword] = useState(true);
-    const [userInfo, setUserInfo] = useState<UserInfo>({ username: '', password: '' });
+    const [userInfo, setUserInfo] = useState<LoginData>({ username: '', password: '' });
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleLogin = () => {
-        console.warn('fazendo requisição..', userInfo);
+    const handleLogin = async () => {
+        try {
+            if (userInfo.username.trim().length === 0 || userInfo.password.trim().length === 0) {
+                toastError('Login/Senha não podem ser vazios ou só espaços');
+            }
+            else if (!validateEmail(userInfo.username)) {
+                toastError('Email inválido!');
+            }
+            else {
+                setIsLoading(true);
+                const res = await makeLoginRequest(userInfo);
+                await saveSessionData(res.data);
+                navigation.reset({routes: [{name: 'Movies'}], index: 0});
+            }
+        }
+        catch (error) {
+            toastError('Usuário/senha inválidos');
+            setIsLoading(false);
+        }
     }
 
     return (
@@ -39,7 +63,7 @@ const Login = () => {
                     <TextInput
                         placeholder="Senha"
                         autoCapitalize="none"
-                        style={[loginCss.inputStyle, {paddingRight: 48}]}
+                        style={[loginCss.inputStyle, { paddingRight: 48 }]}
                         value={userInfo.password}
                         onChangeText={
                             e => {
@@ -56,13 +80,18 @@ const Login = () => {
                     >
                         <Image
                             source={hidePassword ? closedEye : openedEye}
-                            style={{height: 30, width: 30}}
+                            style={{ height: 30, width: 30 }}
                         />
                     </TouchableOpacity>
                 </View>
             </View>
             <View style={loginCss.btnContainer}>
-                <ButtonIcon label="fazer login" onPress={handleLogin} />
+                {
+                    isLoading ? 
+                    (<ActivityIndicator color="#000" size="large" />)
+                    :
+                    (<ButtonIcon label="fazer login" onPress={handleLogin} />)
+                }
             </View>
         </View>
     );

@@ -23,7 +23,7 @@ export const commonCss = StyleSheet.create({
         alignItems: "center",
         padding: 20,
         backgroundColor: colors.secondary
-    }
+    },
 });
 
 export const leftHeaderCss = StyleSheet.create({
