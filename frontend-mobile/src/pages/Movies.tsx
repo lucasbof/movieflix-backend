@@ -5,6 +5,7 @@ import { commonCss, moviesListCss } from '../styles';
 import { makePrivateRequest } from '../utils/requests';
 import { Genre, Movie } from '../utils/types';
 import downArrow from '../assets/images/down-arrow.png';
+import { toastError } from '../utils/customToast';
 
 const Movies = () => {
 
@@ -56,7 +57,7 @@ const Movies = () => {
       setActivePage(isGenreChange ? 1 : activePage + 1);
     }
     catch (error) {
-      console.warn(error);
+      toastError('Erro ao buscar a lista de filmes!');
     }
     finally {
       setIsLoading(false);
@@ -70,7 +71,7 @@ const Movies = () => {
       setGenres([...res.data, { id: 0, name: 'Todos os gêneros' }]);
     }
     catch (error) {
-      console.warn(error);
+      toastError('Erro ao buscar a lista de gêneros!');
     }
     finally {
       setIsGenresLoading(false);
