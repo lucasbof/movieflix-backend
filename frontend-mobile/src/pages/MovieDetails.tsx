@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
-import { MovieCard } from '../components';
+import React from 'react';
+import { Text, View } from 'react-native';
 import { commonCss } from '../styles';
 import { Movie } from '../utils/types';
 

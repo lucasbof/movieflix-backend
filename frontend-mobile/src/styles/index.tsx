@@ -186,6 +186,7 @@ export const movieCardCss = StyleSheet.create({
         width: 374,
         height: 408,
         paddingVertical: 20,
+        marginTop: 18,
         
         //IOS shadow
         shadowOffset: {
