@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, Image, Modal, TouchableOpacity, ScrollView } from 'react-native';
 import { MovieCard } from '../components';
 import { commonCss, moviesListCss } from '../styles';
@@ -40,7 +40,7 @@ const Movies = () => {
         genreId
       }
 
-      if(isGenreChange) {
+      if (isGenreChange) {
         setActivePage(0);
       }
 
@@ -51,8 +51,8 @@ const Movies = () => {
       else {
         setMoviesList([...moviesList, ...res.data.content]);
       }
-      if (activePage === 0) {
-        setTotalPages(res.data.totalPages);
+      if (activePage === 0 || isGenreChange) {
+        setTotalPages(res.data.totalPages !== 0 ? res.data.totalPages - 1 : 0);
       }
       setActivePage(isGenreChange ? 1 : activePage + 1);
     }
@@ -79,16 +79,18 @@ const Movies = () => {
   }
 
   useEffect(() => {
-    if (activePage !== 0) {
-      getMoviesList(true);
-    }
-    else {
-      getMoviesList(false);
+    if (!isLoading) {
+      if (activePage !== 0) {
+        getMoviesList(true);
+      }
+      else {
+        getMoviesList(false);
+      }
     }
   }, [genreId]);
 
   useEffect(() => {
-    getGenresList();
+    if(!isGenresLoading) getGenresList();
   }, []);
 
   return (
@@ -144,14 +146,10 @@ const Movies = () => {
           (
             <FlatList
               data={moviesList}
-              renderItem={({ item }) =>
-              (<MovieCard
-                key={item.id}
-                movie={item}
-              />)
-              }
-              onEndReached={() => { if(activePage <= totalPages) getMoviesList(false) }}
+              renderItem={({ item }) => (<MovieCard id={item.id} title={item.title} subTitle={item.subTitle} imgUrl={item.imgUrl} year={item.year} />)}
+              onEndReached={() => { if (activePage <= totalPages && !isLoading) setTimeout(() => getMoviesList(false), 200) }}
               onEndReachedThreshold={0.1}
+              initialNumToRender={10}
               keyExtractor={(item) => item.id.toString()}
               ListFooterComponent={renderFooter}
             />
@@ -162,4 +160,5 @@ const Movies = () => {
     </View>
   );
 }
+
 export default Movies;

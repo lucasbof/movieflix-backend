@@ -7,10 +7,14 @@ import { truncate } from '../utils/helpers';
 import { Movie } from '../utils/types';
 
 type Props = {
-    movie: Movie;
+    id: number;
+    title: string;
+    subTitle: string;
+    year: number;
+    imgUrl: string;
 }
 
-const MovieCard = ({ movie }: Props) => {
+const MovieCard = ({ id, title, subTitle, year, imgUrl }: Props) => {
 
     const navigation = useNavigation();
 
@@ -19,15 +23,15 @@ const MovieCard = ({ movie }: Props) => {
             <View>
                 <Image
                     style={movieCardCss.filmImage}
-                    source={{ uri: movie.imgUrl }}
+                    source={{ uri: imgUrl }}
                 />
             </View>
             <View style={movieCardCss.infosArea}>
-                <Text style={movieCardCss.titleText}>{truncate(movie.title, 32)}</Text>
-                <Text style={movieCardCss.yearText}>{movie.year}</Text>
-                <Text style={movieCardCss.subTitleText}>{truncate(movie.subTitle, 36)}</Text>
+                <Text style={movieCardCss.titleText}>{truncate(title, 32)}</Text>
+                <Text style={movieCardCss.yearText}>{year}</Text>
+                <Text style={movieCardCss.subTitleText}>{truncate(subTitle, 36)}</Text>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('MovieDetails', {movieId: movie.id})}
+                    onPress={() => navigation.navigate('MovieDetails', {movieId: id})}
                     activeOpacity={0.6}
                     style={movieCardCss.btnDetailsContainer}
                 >
@@ -37,4 +41,5 @@ const MovieCard = ({ movie }: Props) => {
         </View>
     );
 }
-export default MovieCard;
+
+export default React.memo(MovieCard);
