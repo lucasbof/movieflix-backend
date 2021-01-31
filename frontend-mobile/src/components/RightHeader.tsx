@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { rightHeaderCss } from '../styles';
 import { isAuthenticated, logout } from '../utils/auth';
 
 const RightHeader = () => {
-    const navigation = useNavigation();
     const [authenticated, setAuthenticated] = useState(false);
 
     const getAuthStatus = async () => {
@@ -15,9 +13,8 @@ const RightHeader = () => {
 
     const handleLogout = async () => {
         if(authenticated) {
-            await logout();
             setAuthenticated(false);
-            navigation.reset({routes: [{name: 'Home'}], index: 0});
+            logout();
         }
     }
 

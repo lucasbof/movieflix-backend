@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Routes from './src/Routes';
 import * as Updates from 'expo-updates';
 //import { toastError } from './src/utils/customToast';
+import { navigationRef } from './src/utils/RootNavigation';
 
 export default function App() {
 
@@ -28,7 +29,9 @@ export default function App() {
 
 
   return (
-    <NavigationContainer>
+    <NavigationContainer 
+      ref={navigationRef}
+    >
       <Routes />
     </NavigationContainer>
   );

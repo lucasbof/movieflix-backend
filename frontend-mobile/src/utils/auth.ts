@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import asyncStorage from '@react-native-async-storage/async-storage';
 import { LoginResponse } from './types';
+import { reset } from './RootNavigation';
 
 export const CLIENT_ID = 'movieflix';
 export const CLIENT_SECRET = 'movieflix123';
@@ -56,4 +57,5 @@ export const isAllowedByRole = async (routeRoles: Role[] = []) => {
 
 export const logout = async () => {
     await asyncStorage.removeItem('authData');
+    reset('Home');
 }
